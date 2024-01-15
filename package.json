@@ -1,0 +1,21 @@
+{
+  "name": "gama-upload",
+  "version": "0.0.1",
+  "description": "Upload para los servicios de gama-apps",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [
+    "AWS",
+    "S3"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.3",
+    "nodemon": "^3.0.2"
+  }
+}
