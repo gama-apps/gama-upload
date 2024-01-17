@@ -1,5 +1,7 @@
 import express from 'express'
 import fileUpload from 'express-fileupload'
+import {} from './config.js'
+
 
 //Iniciando la aplicación
 const app = express();
