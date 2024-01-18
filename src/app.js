@@ -1,6 +1,6 @@
 import express from 'express'
 import fileUpload from 'express-fileupload'
-import {} from './config.js'
+import './config.js'
 
 
 //Iniciando la aplicación
