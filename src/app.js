@@ -1,6 +1,6 @@
 import express from 'express'
 import fileUpload from 'express-fileupload'
-import './config.js'
+import { uploadFile } from './s3.js'
 
 
 //Iniciando la aplicación
@@ -16,9 +16,10 @@ app.get('/', (req, res) => {
   res.json({message: 'gama-upload'})
 })
 
-app.post('/files', (req, res) => {
-  console.log(req.files);
-  res.send({message: 'uploaded file'})
+app.post('/files',async (req, res) => {
+  const result = await uploadFile(req.files.file);
+  //res.send({message: 'uploaded file'})
+  res.json({ result })
 })
 
 const PORT = process.env.PORT || 20047
