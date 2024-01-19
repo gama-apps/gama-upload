@@ -1,6 +1,6 @@
 import express from 'express'
 import fileUpload from 'express-fileupload'
-import { uploadFile } from './s3.js'
+import { uploadFile, getFiles, getFile } from './s3.js'
 
 
 //Iniciando la aplicación
@@ -12,13 +12,23 @@ app.use(fileUpload({
   tempFileDir: 'upload'
 }));
  
-app.get('/', (req, res) => {
-  res.json({message: 'gama-upload'})
+// app.get('/', (req, res) => {
+//   res.json({message: 'gama-upload'})
+// })
+
+app.get('/files', async (req, res) => {
+  const result = await getFiles()
+  res.json(result.Contents)
 })
 
-app.post('/files',async (req, res) => {
+app.get('/files/:fileName', async (req, res) => {
+  console.log(req.params.fileName);
+  res.send('recibido')
+})
+
+app.post('/files', async (req, res) => {
   const result = await uploadFile(req.files.file);
-  //res.send({message: 'uploaded file'})
+  res.send({ message: 'uploaded file' })
   res.json({ result })
 })
 
