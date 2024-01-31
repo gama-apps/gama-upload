@@ -53,3 +53,5 @@ export async function downloadFile(fileName){
   const result = await client.send(command)
   result.Body.pipe(fs.createWriteStream(`./downloads/${fileName}`))
 }
+
+//investigar creacion de carpetas en los buckets
